@@ -1,0 +1,29 @@
+name: Asun AI Autonomous Loop
+
+on:
+  schedule:
+    - cron: '0 */2 * * *' # Her 2 saatte bir otomatik çalışır
+  workflow_dispatch: # İstediğinde elinle de başlatabilmen için buton ekler
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodları Klonla
+        uses: actions/checkout@v4
+
+      - name: Python Kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Kütüphaneleri Yükle
+        run: |
+          pip install -r requirements.txt
+
+      - name: Asun AI API'yi Test Et ve Çalıştır
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          python -c "import main; print('Asun AI API Modülü Başarıyla Yüklendi ve Derlendi.')"

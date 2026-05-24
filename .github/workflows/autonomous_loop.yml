@@ -5,6 +5,9 @@ on:
     - cron: '0 */2 * * *' # Her 2 saatte bir otomatik çalışır
   workflow_dispatch: # İstediğinde elinle de başlatabilmen için buton ekler
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Node.js 24 uyarısını çözen kritik ayar
+
 jobs:
   evolve:
     runs-on: ubuntu-latest

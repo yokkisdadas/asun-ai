@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+httpx
+python-dotenv
+pydantic
+duckduckgo-search
+python-multipart
+requests==2.31.0

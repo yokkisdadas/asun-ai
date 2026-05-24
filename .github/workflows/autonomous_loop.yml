@@ -3,20 +3,17 @@ name: Asun AI Autonomous Loop
 on:
   schedule:
     - cron: '0 */2 * * *' # Her 2 saatte bir otomatik çalışır
-  workflow_dispatch: # İstediğinde elinle de başlatabilmen için buton ekler
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Node.js 24 uyarısını çözen kritik ayar
+  workflow_dispatch: # Elinle başlatabilmen için
 
 jobs:
   evolve:
     runs-on: ubuntu-latest
     steps:
       - name: Kodları Klonla
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2 # Güncel ve Node 24 uyumlu alt sürüm
 
       - name: Python Kur
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5.3.0 # Güncel ve Node 24 uyumlu alt sürüm
         with:
           python-version: '3.11'
 
